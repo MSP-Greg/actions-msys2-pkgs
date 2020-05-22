@@ -1,0 +1,19 @@
+name: Install MSYS2
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: >-
+      Install MSYS2
+    runs-on: 'windows-latest'
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install MSYS2
+        run:  |
+          ren C:\msys64 C:\msys64_old
+          ./Install-Msys2.ps1
