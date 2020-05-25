@@ -19,7 +19,7 @@ $msys2Uri = ((Invoke-RestMethod $msys2_release).assets | Where-Object {
 
 # Download the latest msys2 x86_64, filename includes release date
 Write-Host "Starting msys2 download using $($msys2Uri.split('/')[-1])"
-$mys2File = Start-DownloadWithRetry -Url $msys2Uri
+$msys2File = Start-DownloadWithRetry -Url $msys2Uri
 Write-Host "Finished download"
 
 # nix style path for tar
