@@ -16,4 +16,5 @@ jobs:
       - name: Install MSYS2
         run:  |
           ren C:\msys64 C:\msys64_old
-          ./Install-Msys2.ps1
+          Import-Module ./ImageHelpers/ImageHelpers.psd1
+          ./Installers/Install-Msys2.ps1

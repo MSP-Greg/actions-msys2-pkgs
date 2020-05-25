@@ -17,11 +17,9 @@ $msys2_release = "https://api.github.com/repos/msys2/msys2-installer/releases/la
 $msys2Uri = ((Invoke-RestMethod $msys2_release).assets | Where-Object {
   $_.name -match "x86_64" -and $_.name.EndsWith("tar.xz") }).browser_download_url
 
-$msys2File = "$env:TEMP\msys2.tar.xz"
-
-# Download the latest msys2 x86_64, nomally filename includes release date
+# Download the latest msys2 x86_64, filename includes release date
 Write-Host "Starting msys2 download using $($msys2Uri.split('/')[-1])"
-(New-Object System.Net.WebClient).DownloadFile($msys2Uri, $msys2File)
+$mys2File = Start-DownloadWithRetry -Url $msys2Uri
 Write-Host "Finished download"
 
 # nix style path for tar
