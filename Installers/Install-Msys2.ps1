@@ -31,7 +31,7 @@ $env:PATH = "$gitPath\usr\bin;$gitPath\mingw64\bin;$origPath"
 $tar = "$gitPath\usr\bin\tar.exe"
 
 # extract tar.xz to C:\
-Write-Host "Starting msys2 extraction of $msys2FileU"
+Write-Host "Starting msys2 extraction"
 &$tar -xJf $msys2FileU -C /c/
 Remove-Item $msys2File
 Write-Host "Finished extraction"
