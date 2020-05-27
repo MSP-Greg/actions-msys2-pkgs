@@ -39,6 +39,10 @@ Write-Host "Finished extraction"
 # Add msys2 bin tools folders to PATH temporary
 $env:PATH = "C:\msys64\mingw64\bin;C:\msys64\usr\bin;$origPath"
 
+if (!(Test-Path -Path C:\msys64\home\$env:USERNAME -PathType Container )) {
+  New-Item      -Path C:\msys64\home\$env:USERNAME -ItemType Directory
+}
+
 Write-Host "`n$dash bash pacman-key --init"
 bash.exe -c "pacman-key --init 2>&1"
 
